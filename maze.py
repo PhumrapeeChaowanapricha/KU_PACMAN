@@ -1,9 +1,10 @@
 from gamelib import Sprite
+import tkinter as tk
 from dir_consts import *
 
 class Dot(Sprite):
-    def __init__(self, app, x, y):
-        super().__init__(app, '../KU_PACMAN/images/dot.png', x, y)
+    def __init__(self, app, x, y,  photo_image=None):
+        super().__init__(app, '../KU_PACMAN/images/dot.png', x, y, photo_image=photo_image)
 
         self.is_eaten = False
 
@@ -13,8 +14,8 @@ class Dot(Sprite):
 
 
 class Wall(Sprite):
-    def __init__(self, app, x, y):
-        super().__init__(app, '../KU_PACMAN/images/wall.png', x, y)
+    def __init__(self, app, x, y, photo_image=None):
+        super().__init__(app, '../KU_PACMAN/images/wall.png', x, y, photo_image=photo_image)
 
 
 class Maze:
@@ -58,16 +59,19 @@ class Maze:
 
         self.init_active_dots()
 
+        self.wall_image = tk.PhotoImage(file='images/wall.png')
+        self.dot_image = tk.PhotoImage(file='images/dot.png')
+
         for i in range(self.get_height()):
             for j in range(self.get_width()):
                 x, y = self.piece_center(i, j)
 
                 if self.has_wall_at(i, j):
-                    wall = Wall(self.app, x, y)
+                    wall = Wall(self.app, x, y, self.wall_image)
                     self.walls.append(wall)
 
                 if self.has_dot_at(i, j):
-                    dot = Dot(self.app, x, y)
+                    dot = Dot(self.app, x, y, self.dot_image)
                     self.dots[(i,j)] = dot
 
     def __init__(self, app, canvas_width, canvas_height):
