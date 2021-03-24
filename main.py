@@ -65,19 +65,20 @@ class PacmanGame(GameApp):
         self.pacman2_score = 0
 
         # register the observers.
-        self.pacman1.dot_eaten_observers.append(self.dot_eaten_pacman(1))
-        self.pacman2.dot_eaten_observers.append(self.dot_eaten_pacman(2))
+        self.pacman1.dot_eaten_observers.append(self.dot_eaten_by_pacman1)
+        self.pacman2.dot_eaten_observers.append(self.dot_eaten_by_pacman2)
 
     # update pacman score.
     def update_scores(self):
         self.pacman1_score_text.set_text(f'P1: {self.pacman1_score}')
         self.pacman2_score_text.set_text(f'P2: {self.pacman2_score}')
 
-    def dot_eaten_pacman(self, num):
-        if num == 1:
-            self.pacman1_score += 1
-        else:
-            self.pacman2_score += 1
+    def dot_eaten_by_pacman1(self):
+        self.pacman1_score += 1
+        self.update_scores()
+
+    def dot_eaten_by_pacman2(self):
+        self.pacman2_score += 1
         self.update_scores()
 
     def pre_update(self):
