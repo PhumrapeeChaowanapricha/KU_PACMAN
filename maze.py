@@ -2,8 +2,8 @@ from gamelib import Sprite
 from dir_consts import *
 
 class Dot(Sprite):
-    def __init__(self, app, x, y):
-        super().__init__(app, '../KU_PACMAN/images/dot.png', x, y)
+    def __init__(self, app, x, y,  photo_image=None):
+        super().__init__(app, '../KU_PACMAN/images/dot.png', x, y, photo_image=photo_image)
 
         self.is_eaten = False
 
@@ -13,8 +13,8 @@ class Dot(Sprite):
 
 
 class Wall(Sprite):
-    def __init__(self, app, x, y):
-        super().__init__(app, '../KU_PACMAN/images/wall.png', x, y)
+    def __init__(self, app, x, y, photo_image=None):
+        super().__init__(app, '../KU_PACMAN/images/wall.png', x, y, photo_image=photo_image)
 
 
 class Maze:
