@@ -3,7 +3,7 @@ from dir_consts import *
 
 class Dot(Sprite):
     def __init__(self, app, x, y):
-        super().__init__(app, 'images/dot.png', x, y)
+        super().__init__(app, '../KU_PACMAN/images/dot.png', x, y)
 
         self.is_eaten = False
 
@@ -14,7 +14,7 @@ class Dot(Sprite):
 
 class Wall(Sprite):
     def __init__(self, app, x, y):
-        super().__init__(app, 'images/wall.png', x, y)
+        super().__init__(app, '../KU_PACMAN/images/wall.png', x, y)
 
 
 class Maze:
