@@ -24,7 +24,6 @@ class Pacman(Sprite):
         self.is_super_speed = False
         self.super_speed_counter = 0
 
-
         x, y = maze.piece_center(r, c)
         super().__init__(app, '../KU_PACMAN/images/pacman.png', x, y)
 
@@ -34,6 +33,14 @@ class Pacman(Sprite):
 
             if self.maze.has_dot_at(r, c):
                 self.maze.eat_dot_at(r, c)
+
+                if random.random() < 0.1:
+                    #randomly set is_super_speed with probability 0.1, we also restart the counter
+                    if not self.is_super_speed:
+                        self.is_super_speed = True
+                        self.super_speed_counter = 0
+            
+
                 # call all the observers.
                 for observer in self.dot_eaten_observers:
                     observer()
@@ -126,7 +133,7 @@ class PacmanGame(GameApp):
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.title("Monkey Banana Game")
+    root.title("Pacman game")
  
     # do not allow window resizing
     root.resizable(False, False)
