@@ -1,4 +1,5 @@
 from gamelib import Sprite
+import tkinter as tk
 from dir_consts import *
 
 class Dot(Sprite):
@@ -57,6 +58,9 @@ class Maze:
         self.dots = {}
 
         self.init_active_dots()
+
+        self.wall_image = tk.PhotoImage(file='images/wall.png')
+        self.dot_image = tk.PhotoImage(file='images/dot.png')
 
         for i in range(self.get_height()):
             for j in range(self.get_width()):
