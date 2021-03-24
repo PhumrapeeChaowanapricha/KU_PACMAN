@@ -32,7 +32,8 @@ class Pacman(Sprite):
                 self.maze.eat_dot_at(r, c)
 
                 # call all the observers.
-
+                for observer in self.dot_eaten_observers:
+                    observer()
 
             if self.maze.is_movable_direction(r, c, self.next_direction):
                 self.direction = self.next_direction
