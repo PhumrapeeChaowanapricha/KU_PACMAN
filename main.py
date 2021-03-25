@@ -97,7 +97,6 @@ class NormalPacmanState:
             self.pacman.state = SuperPacmanState(self.pacman)
 
     def move_pacman(self):
-        # TODO:
         #   - update the pacman's location with normal speed
         SPEED = PACMAN_SPEED
         pacman = self.pacman
@@ -113,7 +112,6 @@ class SuperPacmanState:
         pass
 
     def move_pacman(self):
-        # TODO:
         #   - update the pacman's location with super speed
         #   - update the counter, if the counter >= 50, set state back to NormalPacmanState
         SPEED = PACMAN_SPEED
